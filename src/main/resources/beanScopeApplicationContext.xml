@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="fortuneService" class="com.rodrigo.poc.xml.services.HappyFortuneService"/>
+
+    <!-- Define your beans here -->
+    <bean id="baseballCoach" class="com.rodrigo.poc.xml.models.BaseballCoach" scope="prototype"
+          init-method="initMethod" destroy-method="destroyMethod">
+        <constructor-arg ref="fortuneService"/>
+    </bean>
+
+
+    <!-- define the dependency -->
+</beans>
+
+
+
+
+

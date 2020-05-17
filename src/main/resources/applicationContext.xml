@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- load properties file -->
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="fortuneService" class="com.rodrigo.poc.xml.services.HappyFortuneService"/>
+
+    <!-- Define your beans here -->
+    <bean id="baseballCoach" class="com.rodrigo.poc.xml.models.BaseballCoach">
+        <constructor-arg ref="fortuneService"/>
+    </bean>
+
+    <bean id="cricketCoach" class="com.rodrigo.poc.xml.models.CricketCoach">
+        <property name="fortuneService" ref="fortuneService"/>
+        <property name="email" value="rodrigo@live.com"/>
+        <property name="team" value="${foo.team}"/>
+    </bean>
+
+    <!-- define the dependency -->
+</beans>
+
+
+
+
+
