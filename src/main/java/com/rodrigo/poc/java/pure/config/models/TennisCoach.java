@@ -9,7 +9,7 @@ public class TennisCoach implements Coach {
 
     private FortuneService fortuneService;
 
-    public TennisCoach(@Qualifier("happyFortuneService") FortuneService fortuneService) {
+    public TennisCoach(@Qualifier("happy") FortuneService fortuneService) {
         this.fortuneService = fortuneService;
     }
 

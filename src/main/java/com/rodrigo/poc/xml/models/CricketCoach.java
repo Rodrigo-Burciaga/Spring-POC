@@ -8,6 +8,10 @@ public class CricketCoach implements Coach {
     private String email;
     private String team;
 
+    public CricketCoach() {
+
+    }
+
     public String getTeam() {
         return team;
     }
@@ -22,10 +26,6 @@ public class CricketCoach implements Coach {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public CricketCoach() {
-
     }
 
     public FortuneService getFortuneService() {
