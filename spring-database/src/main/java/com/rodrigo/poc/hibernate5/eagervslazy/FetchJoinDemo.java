@@ -6,9 +6,10 @@ import com.rodrigo.poc.entity.InstructorDetail;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 
-public class GetInstructorCoursesDemo {
+public class FetchJoinDemo {
 
     public static void main(String... args) {
 
@@ -19,12 +20,12 @@ public class GetInstructorCoursesDemo {
             Session session = factory.getCurrentSession();
             int id = 1;
             session.beginTransaction();
-            Instructor instructor = session.get(Instructor.class, id);
-            System.out.println("instructor: " + instructor);
-            System.out.println("courses: " + instructor.getCourses());
-
+            Query<Instructor> query = session.createQuery("select i from Instructor i JOIN FETCH i.courses " +
+                    "where i.id=:id", Instructor.class);
+            Instructor instructor = query.setParameter("id", id).getSingleResult();
+            System.out.println("---------------instructor: " + instructor);
             session.getTransaction().commit();
-            System.out.println("Saved");
+            System.out.println("---------------courses: " + instructor.getCourses());
         } catch (Exception e) {
             e.printStackTrace();
         }

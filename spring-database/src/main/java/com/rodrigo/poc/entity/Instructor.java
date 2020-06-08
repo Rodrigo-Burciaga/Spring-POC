@@ -1,5 +1,8 @@
 package com.rodrigo.poc.entity;
 
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,9 @@ public class Instructor {
     @Column(name = "email")
     private String email;
 
+    @LazyToOne(LazyToOneOption.NO_PROXY)
     @OneToMany(mappedBy = "instructor",
+            fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     private List<Course> courses;
 
@@ -38,6 +43,7 @@ public class Instructor {
         this.lastName = lastName;
         this.email = email;
     }
+
 
     @Override
     public String toString() {
