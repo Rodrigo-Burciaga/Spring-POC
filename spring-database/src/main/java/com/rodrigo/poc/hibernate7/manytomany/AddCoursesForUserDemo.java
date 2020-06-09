@@ -17,13 +17,13 @@ public class AddCoursesForUserDemo {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
 
-            int id = 5;
+            int id = 2;
             Student student = session.get(Student.class, id);
             System.out.println("Student loaded: " + student);
             System.out.println("courses: " + student.getCourses());
 
-            Course course = new Course("Deep learning");
-            Course course2 = new Course("CNN");
+            Course course = new Course("CS 101");
+            Course course2 = new Course("Clean Code");
 
             course.addStudent(student);
             course2.addStudent(student);

@@ -1,12 +1,16 @@
 package com.rodrigo.poc.hibernate7.manytomany;
 
-import com.rodrigo.poc.entity.*;
+import com.rodrigo.poc.entity.Course;
+import com.rodrigo.poc.entity.Instructor;
+import com.rodrigo.poc.entity.InstructorDetail;
+import com.rodrigo.poc.entity.Review;
+import com.rodrigo.poc.entity.Student;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
-public class GetCoursesForUserDemo {
+public class DeleteStudentDemo {
 
     public static void main(String... args) {
 
@@ -21,6 +25,8 @@ public class GetCoursesForUserDemo {
             Student student = session.get(Student.class, id);
             System.out.println("Student loaded: " + student);
             System.out.println("----------------courses: " + student.getCourses());
+            System.out.println("Deleting student");
+            session.delete(student);
 
             session.getTransaction().commit();
             System.out.println("Done!");

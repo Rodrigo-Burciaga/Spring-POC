@@ -16,11 +16,10 @@ public class DeleteCourseDemo {
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
             session.beginTransaction();
-
-            int id = 5;
-            Student student = session.get(Student.class, id);
-            System.out.println("Student loaded: " + student);
-            System.out.println("----------------courses: " + student.getCourses());
+            int courseID = 10;
+            Course course = session.get(Course.class, courseID);
+            System.out.println("Deleting course: " + course);
+            session.delete(course );
 
             session.getTransaction().commit();
             System.out.println("Done!");
