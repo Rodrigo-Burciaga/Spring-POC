@@ -13,17 +13,21 @@ public class Main {
         AccountDAO accountDAO = context.getBean("accountDAO", AccountDAO.class);
         MembershipDAO membershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
         Account account = new Account();
-        accountDAO.addAccount(account, true);
+        account.setName("Bari papa");
+        account.setLevel("Platinum");
         accountDAO.doWork();
 
         accountDAO.setName("foobar");
         accountDAO.setServiceCode("silver");
 
+
         String name = accountDAO.getName();
         String serviceName = accountDAO.getServiceCode();
 
+        accountDAO.addAccount(account, true);
 
         System.out.println("\n Testing again");
+
         membershipDAO.addSillyAccount();
         membershipDAO.goToSleep();
         context.close();
