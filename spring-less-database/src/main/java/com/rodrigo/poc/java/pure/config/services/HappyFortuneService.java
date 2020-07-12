@@ -1,8 +1,8 @@
 package com.rodrigo.poc.java.pure.config.services;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component("happy")
+@Service("happy")
 public class HappyFortuneService implements FortuneService {
     @Override
     public String getFortune() {
